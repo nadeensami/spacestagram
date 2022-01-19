@@ -1,0 +1,29 @@
+:root {
+	// Colors
+	--clr-light-100: #e4ecf5;
+	--clr-light-200: #bacfe6;
+
+	--clr-primary-100: #607c9d;
+	--clr-primary-200: #25456a;
+	--clr-primary-300: #052143;
+
+	--clr-text-100: #383838;
+	--clr-text-200: #000000;
+
+	--clr-accent-purple: #5e4381;
+	--clr-accent-red: #d70000;
+
+	// Fonts
+	--font-heading: "Roboto", sans-serif;
+	--font-paragraph: "Poppins", sans-serif;
+
+	// Font sizes
+	--fs-100: 0.875rem;
+	--fs-200: 1.25rem;
+	--fs-300: 1.5rem;
+
+	// Breakpoints
+	--brk-small: 35em;
+	--brk-medium: 50em;
+	--brk-large: 65em;
+}

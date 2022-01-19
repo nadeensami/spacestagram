@@ -1,0 +1,92 @@
+@use "../base/mixins" as *;
+
+& {
+	display: flex;
+	height: 80vh;
+	align-items: center;
+	justify-content: center;
+}
+
+// Loader text styling
+.loader-content {
+	position: relative;
+	z-index: 1;
+	transition: transform 1s ease-out;
+}
+
+.loader-content.out {
+	transform: scale(0);
+}
+
+.loading-text {
+	color: var(--clr-light-100);
+	width: fit-content;
+	padding: 1rem;
+	background-image: linear-gradient(
+		180deg,
+		#25456a00 0%,
+		var(--clr-primary-200) 25%,
+		var(--clr-primary-200) 75%,
+		#25456a00 100%
+	);
+}
+
+// .loading-text::before {
+.loading-spinner {
+	content: url("/src/assets/spinner.svg");
+	position: absolute;
+	z-index: -1;
+	left: 50%;
+	top: 50%;
+	transform-origin: center;
+	animation: spin 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: translate(-50%, -50%) scale(0.9);
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(0.9) rotate(360deg);
+	}
+}
+
+// Mountain styling
+.mountain {
+	position: fixed;
+	bottom: 0;
+	transform: translateY(100%);
+	animation: mountain-up 1s ease-in forwards;
+}
+
+.mountain.in {
+	animation-direction: normal;
+}
+
+.mountain.out {
+	animation-direction: reverse;
+}
+
+.mountain-2 {
+	animation-delay: 400ms;
+}
+
+.mountain-3 {
+	right: 0;
+	animation-delay: 800ms;
+}
+
+@include mq(130em) {
+	.mountain {
+		display: none;
+	}
+}
+
+@keyframes mountain-up {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}

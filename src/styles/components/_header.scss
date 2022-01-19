@@ -1,0 +1,33 @@
+.skip-links {
+	position: absolute;
+	text-decoration: none;
+	color: var(--clr-light-100);
+	padding: 1rem;
+	border: 2px solid var(--clr-light-100);
+	left: 0;
+	right: 0;
+	width: fit-content;
+	margin: 1rem auto;
+	transform: translateY(-150%);
+	transition: transform 200ms ease-in;
+
+	&:focus {
+		transform: translateY(0);
+	}
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 3rem;
+	padding-bottom: 1rem;
+	max-width: 60em;
+	width: 80vw;
+	margin: auto;
+
+	.navigation-links {
+		list-style: none;
+		display: flex;
+		gap: 1rem;
+	}
+}

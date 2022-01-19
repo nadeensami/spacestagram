@@ -1,0 +1,20 @@
+// Base styles for commonly-used elements
+
+h2 {
+	font-family: var(--font-heading);
+	font-size: var(--fs-300);
+	font-weight: 500;
+	text-transform: lowercase;
+	font-variant: small-caps;
+}
+
+p {
+	font-family: var(--font-paragraph);
+	font-weight: 300;
+	font-size: var(--fs-100);
+	color: var(--clr-text-100);
+}
+
+.none {
+	display: none;
+}
