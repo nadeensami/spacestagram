@@ -11,5 +11,9 @@
 }
 
 .main-grid {
-	@import "imageGrid";
+	@import "mainGrid";
+}
+
+.content-card {
+	@import "contentCard";
 }
