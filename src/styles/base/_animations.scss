@@ -1,0 +1,47 @@
+@keyframes spin {
+	0% {
+		transform: translate(-50%, -50%) scale(0.9);
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(0.9) rotate(360deg);
+	}
+}
+
+@keyframes up {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes up-vh {
+	0% {
+		transform: translateY(100vh);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes jump {
+	0% {
+		transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1);
+	}
+	40% {
+		transform: translate3d(0, -30%, 0) scale3d(0.8, 1.4, 1);
+	}
+	100% {
+		transform: translate3d(0, -100%, 0) scale3d(1.4, 0.8, 1);
+	}
+}

@@ -42,21 +42,12 @@
 	animation: spin 2s ease-in-out infinite;
 }
 
-@keyframes spin {
-	0% {
-		transform: translate(-50%, -50%) scale(0.9);
-	}
-	100% {
-		transform: translate(-50%, -50%) scale(0.9) rotate(360deg);
-	}
-}
-
 // Mountain styling
 .mountain {
 	position: fixed;
 	bottom: 0;
 	transform: translateY(100%);
-	animation: mountain-up 1s ease-in forwards;
+	animation: up 1s ease-in forwards;
 }
 
 .mountain.in {
@@ -79,14 +70,5 @@
 @include mq(130em) {
 	.mountain {
 		display: none;
-	}
-}
-
-@keyframes mountain-up {
-	0% {
-		transform: translateY(100%);
-	}
-	100% {
-		transform: translateY(0%);
 	}
 }

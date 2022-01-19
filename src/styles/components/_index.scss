@@ -1,5 +1,5 @@
-.app {
-	@import "app";
+#root {
+	@import "root";
 }
 
 .header {
@@ -10,8 +10,12 @@
 	@import "loader";
 }
 
-.main-grid {
-	@import "mainGrid";
+.content-grid {
+	@import "contentGrid";
+}
+
+.post {
+	@import "post";
 }
 
 .content-card {

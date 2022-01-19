@@ -6,7 +6,7 @@ import mountain_1 from "../assets/mountains/mountain_1.svg";
 import mountain_2 from "../assets/mountains/mountain_2.svg";
 import mountain_3 from "../assets/mountains/mountain_3.svg";
 
-const Loader = ({ transition, error }) => {
+const Loader = ({ transition, error, visible }) => {
 	const [textIndex, setTextIndex] = useState(0);
 
 	const textsFromSpace = [
@@ -30,7 +30,7 @@ const Loader = ({ transition, error }) => {
 	}, [textsFromSpace.length]);
 
 	return (
-		<main className="loader" id="main">
+		<div className={`loader ${visible ? "" : "none"}`}>
 			<div className={`loader-content ${transition}`}>
 				{error ? (
 					<h2 className="loading-text">
@@ -59,7 +59,7 @@ const Loader = ({ transition, error }) => {
 				className={`mountain mountain-1 ${transition}`}
 				alt="dark blue mountain"
 			/>
-		</main>
+		</div>
 	);
 };
 
