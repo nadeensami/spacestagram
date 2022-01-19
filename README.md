@@ -7,6 +7,7 @@ This is my submission for the Shopify frontend challenge. It uses NASA's publica
 - Display 30-days' worth of pictures
 - **Persistent** liking and unliking of photos -- it will stay across the same session
 - A very cool loader that is near and dear to me
+- The ability to share the link to you favorite image!
 
 ## Live Demo
 
