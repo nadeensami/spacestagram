@@ -1,6 +1,5 @@
 // Import libraries
 import { useState, useEffect } from "react";
-import { formatDate } from "../utils";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 // Import components
@@ -37,7 +36,7 @@ const Post = ({ setLoading, setLoadingTransition, setError, visible }) => {
 			.catch(() => {
 				setError(true);
 			});
-	}, []);
+	}, [setLoadingTransition, setError, setLoading, date]);
 
 	return (
 		<main id="main" className={`post ${visible ? "" : "none"}`}>

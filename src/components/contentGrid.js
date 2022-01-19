@@ -41,10 +41,10 @@ const ContentGrid = ({ setLoading, setLoadingTransition, setError, visible }) =>
 			.catch(() => {
 				setError(true);
 			});
-	}, []);
+	}, [setLoadingTransition, setError, setLoading]);
 
 	return (
-		<main id="main" className={`main-grid ${visible ? "" : "none"}`}>
+		<main id="main" className={`content-grid ${visible ? "" : "none"}`}>
 			{/* Main grid */}
 			{data.map((image, i) => (
 				<ContentCard

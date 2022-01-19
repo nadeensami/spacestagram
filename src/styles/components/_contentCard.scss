@@ -89,49 +89,90 @@
 	padding: 0 1.75rem;
 }
 
-.like-button {
+.action-buttons {
 	grid-area: like;
-	justify-self: end;
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
 	margin: 0.5rem 1.75rem 1.75rem;
 
-	cursor: pointer;
+	button {
+		cursor: pointer;
+		background: none;
+		border: none;
 
-	background: none;
-	border: none;
+		svg {
+			transition: transform 200ms ease-in-out;
+		}
 
-	svg {
-		transition: transform 200ms ease-in-out;
+		svg path {
+			transition: fill 200ms ease-in-out;
+		}
+
+		&:hover svg {
+			transform: scale(1.3);
+		}
+
+		// Tooltip
+		&:hover::before,
+		&.copied::before {
+			position: absolute;
+			width: max-content;
+			font-size: var(--fs-100);
+			font-family: var(--font-paragraph);
+			background: var(--clr-light-100);
+			border: 1px solid var(--clr-primary-200);
+			border-radius: 0.25rem;
+			padding: 0.2rem 0.5rem;
+			top: -125%;
+			left: 50%;
+			animation: fade-in 100ms ease-in;
+			z-index: 2;
+			transform: translateX(-50%);
+		}
 	}
 
-	svg path {
-		transition: fill 200ms ease-in-out;
+	.share-button {
+		position: relative;
+
+		&:hover::before {
+			content: "Copy link";
+		}
+
+		&.copied::before {
+			content: "Link copied!";
+			color: green;
+			border: 1px solid green;
+		}
 	}
 
-	&:hover svg {
-		transform: scale(1.3);
-	}
+	.like-button {
+		position: relative;
 
-	&.liked svg path {
-		fill: var(--clr-accent-red);
-	}
+		// Liked styles
+		&.liked {
+			svg {
+				animation: jump 400ms linear alternate 2;
 
-	&.liked svg {
-		animation: jump 400ms linear alternate 2;
-	}
+				path {
+					fill: var(--clr-accent-red);
+				}
+			}
 
-	&:not(.liked) svg path {
-		fill: var(--clr-accent-grey);
-	}
-}
+			&:hover::before {
+				content: "Unlike";
+			}
+		}
 
-@keyframes jump {
-	0% {
-		transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1);
-	}
-	40% {
-		transform: translate3d(0, -30%, 0) scale3d(0.8, 1.4, 1);
-	}
-	100% {
-		transform: translate3d(0, -100%, 0) scale3d(1.4, 0.8, 1);
+		// Not liked styles
+		&:not(.liked) {
+			svg path {
+				fill: var(--clr-accent-grey);
+			}
+
+			&:hover::before {
+				content: "Like";
+			}
+		}
 	}
 }
