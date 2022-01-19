@@ -29,7 +29,7 @@ const App = () => {
 		const endDate = new Date();
 
 		const url = `https://api.nasa.gov/planetary/apod?api_key=${
-			process.env.REACT_APP_API_KEY
+			process.env.API_KEY
 		}&start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}&thumbs=True`;
 
 		fetch(url)
