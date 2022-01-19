@@ -1,5 +1,5 @@
 /* Import fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&family=Montserrat:wght@100;300;400;500;600&display=swap");
 :root {
   --clr-light-100: #e4ecf5;
   --clr-light-200: #bacfe6;
@@ -10,8 +10,8 @@
   --clr-text-200: #000000;
   --clr-accent-purple: #5e4381;
   --clr-accent-red: #d70000;
-  --clr-accent-grey: #A4A4A4;
-  --font-heading: "Roboto", sans-serif;
+  --clr-accent-grey: #a4a4a4;
+  --font-heading: "Montserrat", sans-serif;
   --font-paragraph: "Poppins", sans-serif;
   --fs-100: 0.875rem;
   --fs-200: 1.25rem;
@@ -89,10 +89,9 @@ select {
 }
 h2 {
   font-family: var(--font-heading);
-  font-size: var(--fs-300);
-  font-weight: 500;
-  text-transform: lowercase;
-  font-variant: small-caps;
+  font-size: var(--fs-200);
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 p {
@@ -103,14 +102,15 @@ p {
 }
 
 .none {
-  display: none;
+  display: none !important;
+  height: 0 !important;
 }
 
-.app {
+#root {
   flex: 1;
   background-image: url("/src/assets/background.svg");
 }
-.app .back-to-top {
+#root .back-to-top {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
@@ -121,7 +121,7 @@ p {
   cursor: pointer;
   animation: rocket-up 400ms ease-in;
 }
-.app .back-to-top:hover {
+#root .back-to-top:hover {
   background: rgba(255, 255, 255, 0.166);
 }
 @keyframes rocket-up {
@@ -240,6 +240,12 @@ p {
   margin: 1rem auto;
 }
 
+.post {
+  max-width: 60em;
+  width: 80vw;
+  margin: 1rem auto;
+}
+
 .content-card {
   background: var(--clr-light-100);
   margin-bottom: 1rem;
@@ -286,16 +292,24 @@ p {
 .content-card .title {
   grid-area: title;
   align-self: center;
-  padding: 0.5rem 0 0.5rem 1.75rem;
+  padding: 1rem 0 0.5rem 1.75rem;
+  color: var(--clr-text-200);
+  text-decoration: none;
+}
+.content-card .title,
+.content-card .title h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.content-card .title:hover, .content-card .title:focus {
+  color: var(--clr-primary-200);
 }
 .content-card .date {
   grid-area: date;
   justify-self: end;
   align-self: center;
-  padding: 0.5rem 1.75rem 0.5rem 0;
+  padding: 1rem 1.75rem 0.5rem 0;
   font-family: var(--font-paragraph);
   font-weight: 300;
   font-size: var(--fs-100);

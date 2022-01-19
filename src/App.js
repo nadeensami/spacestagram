@@ -1,9 +1,11 @@
 // Import libraries
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Import components
 import Header from "./components/header";
-import MainGrid from "./components/mainGrid";
+import ContentGrid from "./components/contentGrid";
+import Post from "./components/post";
 import Loader from "./components/loader";
 
 // Import assets
@@ -14,48 +16,36 @@ const App = () => {
 	const [loading, setLoading] = useState(true);
 	const [loadingTransition, setLoadingTransition] = useState("in");
 	const [error, setError] = useState(false);
-	const [data, setData] = useState([]);
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0 });
 	};
 
-	// Fetch data
-	useEffect(() => {
-		// Start loading :)
-		setLoadingTransition("in");
-
-		const startDate = new Date(Date.now() - 2592000000); // 30 days ago
-		const endDate = new Date();
-
-		const url = `https://api.nasa.gov/planetary/apod?api_key=${
-			process.env.REACT_APP_API_KEY
-		}&start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}&thumbs=True`;
-
-		fetch(url)
-			.then((response) => response.json())
-			.then((data) => {
-				setError(false);
-				setLoadingTransition("out");
-
-				setTimeout(() => {
-					setLoading(false);
-				}, 1000);
-
-				data.reverse();
-
-				setData(data);
-			})
-			.catch(() => {
-				setError(true);
-			});
-	}, []);
-
 	return (
-		<div className="app">
+		<Router>
 			<Header />
 
-			{loading ? <Loader transition={loadingTransition} error={error} /> : <MainGrid data={data} />}
+			<Switch>
+				<Route path="/:date">
+					<Post
+						visible={!loading}
+						setLoading={setLoading}
+						setLoadingTransition={setLoadingTransition}
+						setError={setError}
+					/>
+				</Route>
+
+				<Route path="/">
+					<ContentGrid
+						visible={!loading}
+						setLoading={setLoading}
+						setLoadingTransition={setLoadingTransition}
+						setError={setError}
+					/>
+				</Route>
+			</Switch>
+
+			<Loader transition={loadingTransition} error={error} visible={loading} />
 
 			<button
 				className={loading ? "none" : "back-to-top"}
@@ -64,10 +54,8 @@ const App = () => {
 			>
 				<img src={rocket} alt="rocket flying back to top icon" />
 			</button>
-		</div>
+		</Router>
 	);
 };
-
-const formatDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
 export default App;
